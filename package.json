@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-canvas-draw": "^1.2.1",
+    "react-latex": "^2.0.0"
+  }
+}
