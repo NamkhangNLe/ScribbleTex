@@ -112,3 +112,29 @@
   padding: 10px;
   box-sizing: border-box;
 }
+
+
+.button-container button {
+  font-family: 'Orbitron', 'sans-serif';
+  background: linear-gradient(to right, #00b4db, #0083b0);
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  margin-bottom: 10px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 9px #373535;
+}
+
+.button-container button:hover {
+  background-color: #0083b0;
+  color: white;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
