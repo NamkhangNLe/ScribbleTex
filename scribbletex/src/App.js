@@ -103,13 +103,15 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center' }}>
 
+
+        <div style={{ display: 'flex',flexDirection: 'column', alignItems: 'center' }}>
+        <img src={logo} className="App-logo" alt="logo" style={{ width: '150px', marginTop: '-100px' }} />
           {/* This is the title of the page, and the logo*/}
           <p  className='title' style={{ marginRight: '50px', marginTop: '-85px' }}>
             ScribbleTex
           </p>
-          <img src={logo} className="App-logo" alt="logo" style={{ width: '150px', marginTop: '-100px' }} />
+          
         </div>
 
         
@@ -158,8 +160,6 @@ function App() {
         <img src={drawingDataUrl} alt="drawing" className='test-image'/>
 
         <div className='spacer' />
-
-
 
         <div className='spacer' />
 

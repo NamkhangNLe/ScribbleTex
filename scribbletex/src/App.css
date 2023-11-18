@@ -27,9 +27,6 @@
   font-size: 100px;
 }
 
-.hbox {
-  display: flex;
-}
 
 .spacer {
   size: 50px /* Adjust as needed */
@@ -48,10 +45,7 @@
   background-color: #282c34; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+
 
 .title {
   font-family: 'Orbitron', sans-serif;
@@ -63,9 +57,26 @@
 }
 
 
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  color:#61dafb;
+  height: 400px;
+  width: 300px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 15s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
   }
 }
 
@@ -90,14 +101,7 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
 
 .latex-container {
   width: 50%;
