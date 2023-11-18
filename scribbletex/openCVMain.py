@@ -41,8 +41,26 @@ def main():
     #_____________GET SUBARRAY______________
     subarray = getSubarrays(gray, groups)
     np.savetxt("subarray.txt", subarray[0], fmt='%d') # Subarray is 3D array that every layer, holds a letter that is bounded perfectly
-    
 
+    print()
+    print("______________________________________________________________")
+    #_______PERFORM RESIZE AND PADDING TO 45x45________
+
+    print("perform resize and padding to 45x45: ")
+    resize = MULTIresizeSmaller(subarray, 2)
+    np.savetxt("reducedSize.txt", resize[0], fmt='%d') # Subarray is 3D array that every layer, holds a letter that is bounded perfectly
+
+
+    # Conclusion: IN THE END, resize spits out a 3D array where each 2D array slice is a 45x45 image
+    # Call StacK:
+    # getImgFileName = "path to image"
+    # call cv2.imread
+    # call toGrayScale(img)
+    # call underlyingRows(grayScaleimg)
+    # call groupOnes1xd(underlyingRows)
+    # call getSubarrays(gray, Groups)
+    # call MULTIresizeSmaller(subarray, padding)
+    # You now get 3D array
 main()
 
 

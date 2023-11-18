@@ -37,6 +37,7 @@ def underlyingCols(grayImage):
 
 def groupOnes1xD(rowImage):
     """ Input a 1 x D array, create a list that has all of start and end indices of every groupings of ones in a tuple
+    Return an array of size 2 begin/end indices
     """
 
     groupings = [] # main array that will hold [begin, end] of contigous 1s 
@@ -57,7 +58,8 @@ def groupOnes1xD(rowImage):
             sameString = False
     
     return groupings
-
+    
+    #groupOnesVertically
 def groupOnesVert(img):
     """ Given a 2D array, find where the 1s begin and end from top down
     This is a helper method for getSubarrays and the goal is for a segment of the full array to be plugged in. 
@@ -70,7 +72,7 @@ def groupOnesVert(img):
 
 
 def getSubarrays(img, row):
-    """ Given the big picture, be able to split letter by letter """
+    """ Given the big picture (2D array), be able to split letter by letter and return a 3D array"""
     subArrays = [] # holds all of the subArrays/subPicture
     for grouping in row:
         arr = img[:, grouping[0] : grouping[1]] #Captures the rows for one group
@@ -79,6 +81,33 @@ def getSubarrays(img, row):
         subArrays.append(arr)
     
     return subArrays
+
+def SINGLEresizeSmaller(img, padding):
+    """ Given any size large image (2D Array), minimize and add a specified amount of padding
+    The resulting image must always be 45x45 based on the specifications of the ML model
+    """
+    if (padding > 23):
+        print("REDUCE THE PADDING.")
+    else:
+        subtract = padding * 2 #T his is how big the canvas must be because the padding will be added in last
+        canvassize = 45 - subtract # This is both the height and the width
+        reducedImg = cv2.resize(img, (canvassize, canvassize)) # Reduce image size
+        padded = np.pad(reducedImg, padding, mode = "constant", constant_values=0) # Do some padding
+        return padded
+
+def MULTIresizeSmaller(imgs, padding):
+    """ Takes in a 3D array, calls SINGLEresizeSmaller on every layer and returns a 3D array """
+    imgs = np.array(imgs)
+    numLayers = imgs.shape[0]
+    resizedImgs = []
+
+    for index in range(numLayers):
+        resized = SINGLEresizeSmaller(imgs[index], padding)
+        resizedImgs.append(resized)
+    
+    return resizedImgs
+
+
 
 
 
