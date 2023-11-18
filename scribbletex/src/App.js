@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import github from './github.png';
 import CanvasDraw from 'react-canvas-draw';
 import './App.css';
+import Latex from 'react-latex';
 import html2canvas from 'html2canvas';
+import 'katex/dist/katex.min.css';
 
 function App() {
 
@@ -18,6 +20,13 @@ function App() {
 
   // Need a string defined that will be updated in the future.
   const [text, setText] = useState('');
+
+  // This will be a combined set of latex script that can be saved!
+  const [output, setOutput] = useState('');
+
+  const saveText = () => {
+      output += text + '\n';
+  }
 
   // This function clears the canvas.
   const handleClear = () => {
@@ -59,10 +68,16 @@ function App() {
       alert('Failed to upload image.');
     }
   };
-
-  const saveText = async () => {
-    
+  
+  const downloadText = () => {
+    const element = document.createElement("a");
+    const file = new Blob([output], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = "scribbletex.txt";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
   }
+
 
   // This is the HTML that is rendered to the page.
   return (
@@ -97,6 +112,14 @@ function App() {
         </div>
 
         <button onClick={saveText}>Save Text</button>
+
+        <div className='latex-container'>
+          <Latex>{output}</Latex>
+        </div>
+
+        <button onClick={downloadText}>Download Text</button>
+        
+        <div className='spacer' />
 
 
         {/* Buttons */}
