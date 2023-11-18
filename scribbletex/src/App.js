@@ -40,9 +40,9 @@ function App() {
   const capture = () => {
     const canvas = saveableCanvas.current.canvasContainer.children[1];
     html2canvas(canvas).then((canvas) => {
-      const imgData = canvas.toDataURL('image/jpg');
+      const imgData = canvas.toDataURL('image/jpg'); //Converts to base64
       setDrawingDataUrl(imgData);
-
+      
     });
   };
 
@@ -63,7 +63,7 @@ function App() {
   const handleMouseUp = () => {
     //Note that this calls the capture function above.
     capture();
-    downloadImage();
+    // downloadImage();
     alert("Drawing finished!"); 
   };
 
@@ -123,12 +123,12 @@ function App() {
 
         <div className = 'hbox' style={{ display: 'flex', justifyContent: 'space-around' }}>
           {/* Canvas */}
-          <div className="canvas-container" 
-            //These events ensure unecessary API calls are not made until
-            //the user has drawn something and the mouse has left 
-            //the canvas, it calls handleMouseUp() to save the image.
-            onMouseUp={()=> setIsMouseDown(false)}
-            onMouseLeave={() => {setIsMouseOut(true); if(!isMouseDown) handleMouseUp()}}
+          <div className="canvas-container"
+            onMouseUp={() => {
+              setIsMouseDown(false);
+              handleMouseUp(); // Trigger download on mouse up
+            }}
+            onMouseLeave={() => setIsMouseOut(true)}
             onMouseEnter={() => setIsMouseDown(true)}
           >
             <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
@@ -161,12 +161,12 @@ function App() {
           <button onClick={handleUpload}>Upload</button>
         </div>
 
-        {/* Image is drawn to screen, this is an example */}
+        {/* Image is drawn to screen, this is an example
         <img src={drawingDataUrl} alt="drawing" className='test-image'/>
 
         <div className='spacer' />
 
-        <div className='spacer' />
+        <div className='spacer' /> */}
 
         {/* GitHub link */}
         <a
