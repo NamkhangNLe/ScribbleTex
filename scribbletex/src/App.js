@@ -16,6 +16,9 @@ function App() {
   // This assigns a reference to the canvas so we can access it later.
   const saveableCanvas = useRef();
 
+  // Need a string defined that will be updated in the future.
+  const [text, setText] = useState('');
+
   // This function clears the canvas.
   const handleClear = () => {
     saveableCanvas.current.clear();
@@ -65,18 +68,31 @@ function App() {
         <div style={{ display: 'flex', alignItems: 'center' }}>
 
           {/* This is the title of the page, and the logo*/}
-          <p style={{ marginRight: '50px', marginTop: '-100px' }}>
+          <p  className='title' style={{ marginRight: '50px', marginTop: '-85px' }}>
             ScribbleTex
           </p>
           <img src={logo} className="App-logo" alt="logo" style={{ width: '150px', marginTop: '-100px' }} />
         </div>
 
+        
+
         <div className='spacer' />
 
-        {/* Canvas */}
-        <div className="canvas-container" style={{ marginTop: '-50px' }} onMouseUp={handleMouseUp}>
-          <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
+        
+
+        <div className = 'hbox' style={{ display: 'flex', justifyContent: 'space-around' }}>
+          {/* Canvas */}
+          <div className="canvas-container" onMouseUp={handleMouseUp}>
+            <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
+          </div>
+
+          {/* Placeholder Text */}
+          <div className="placeholder-text">
+            <p>   </p>
+          </div>
         </div>
+
+        
 
         {/* Buttons */}
         <div className="button-container">
@@ -85,7 +101,7 @@ function App() {
         </div>
 
         {/* Image is drawn to screen, this is an example */}
-        <img src={drawingDataUrl} alt="drawing" />
+        <img src={drawingDataUrl} alt="drawing" className='test-image'/>
 
         <div className='spacer' />
 
