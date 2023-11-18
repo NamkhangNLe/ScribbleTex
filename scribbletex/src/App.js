@@ -3,9 +3,11 @@ import logo from './logo.svg';
 import github from '/Users/Explo1t/Documents/ScribbleTex/scribbletex/src/github.png';
 import CanvasDraw from 'react-canvas-draw';
 import './App.css';
+import html2canvas from 'html2canvas';
 
 function App() {
 
+  
   const [drawingDataUrl, setDrawingDataUrl] = useState('');
 
   const saveableCanvas = useRef();
@@ -14,20 +16,40 @@ function App() {
     saveableCanvas.current.clear();
   }
 
-  const handleUpload = async () => {
-    const drawing = saveableCanvas.current.getSaveData("png");
-    setDrawingDataUrl(drawing);
-    alert("Image Uploaded!");
-    String (drawing);
-  }
+  
 
-  //Function called when mouse is released
+  
+
+  const capture = () => {
+    const canvas = saveableCanvas.current.canvasContainer.children[1];
+    html2canvas(canvas).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      setDrawingDataUrl(imgData);
+    });
+  };
+
   const handleMouseUp = () => {
-    const drawing = saveableCanvas.current.getSaveData("png");
-    setDrawingDataUrl(drawing);
+    capture();
     alert("Drawing finished!"); 
-  }
+  };
 
+  const handleUpload = async () => {
+    const response = await fetch('https://your-server.com/upload', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        image: drawingDataUrl,
+      }),
+    });
+
+    if (response.ok) {
+      alert('Image uploaded successfully!');
+    } else {
+      alert('Failed to upload image.');
+    }
+  };
 
 
   return (
@@ -44,7 +66,7 @@ function App() {
                     <div className='spacer' />
 
                     {/* Canvas */}
-                    <div className="canvas-container" style={{ marginTop: '-50px' }}>
+                    <div className="canvas-container" style={{ marginTop: '-50px' }} onMouseUp={handleMouseUp}>
                       <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
                     </div>
                       
@@ -53,6 +75,8 @@ function App() {
                       <button onClick={handleClear}>Clear</button>
                       <button onClick={handleUpload}>Upload</button>
                     </div>
+                    
+                    <img src={drawingDataUrl} alt="drawing" />
 
                     <div className='spacer' />
 
