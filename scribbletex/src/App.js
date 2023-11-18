@@ -140,13 +140,17 @@ function App() {
           </div>
         </div>
 
+        <div className='button-container'>
         <button onClick={saveText}>Save Text</button>
+        </div>
 
         <div className='latex-container'>
           <Latex>{output}</Latex>
         </div>
 
+        <div className="button-container">
         <button onClick={downloadText}>Download Text</button>
+        </div>
         
         <div className='spacer' />
 
