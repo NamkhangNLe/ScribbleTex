@@ -57,6 +57,10 @@ function App() {
     }
   };
 
+  const saveText = async () => {
+    
+  }
+
   // This is the HTML that is rendered to the page.
   return (
     <div className="App">
@@ -78,6 +82,8 @@ function App() {
           <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
         </div>
 
+        <button onClick={saveText}>Save Text</button>
+
         {/* Buttons */}
         <div className="button-container">
           <button onClick={handleClear}>Clear</button>
@@ -86,6 +92,10 @@ function App() {
 
         {/* Image is drawn to screen, this is an example */}
         <img src={drawingDataUrl} alt="drawing" />
+
+        <div className='spacer' />
+
+
 
         <div className='spacer' />
 
