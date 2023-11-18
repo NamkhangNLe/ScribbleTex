@@ -50,6 +50,12 @@ def main():
     resize = MULTIresizeSmaller(subarray, 2)
     np.savetxt("reducedSize.txt", resize[0], fmt='%d') # Subarray is 3D array that every layer, holds a letter that is bounded perfectly
 
+    print()
+    print("______________________________________________________________")
+
+    #_______CONVERT TO 1D________
+    converted2D = convertAll2D(resize)
+    print(converted2D.shape)
 
     # Conclusion: IN THE END, resize spits out a 3D array where each 2D array slice is a 45x45 image
     # Call StacK:
@@ -59,6 +65,9 @@ def main():
     # call underlyingRows(grayScaleimg)
     # call groupOnes1xd(underlyingRows)
     # call getSubarrays(gray, Groups)
+    # call MULTIresizeSmaller(resize, padding)
+    # call convertAll2D(resize)
+    # This can now go straight into the model
     # call MULTIresizeSmaller(subarray, padding)
     # You now get 3D array
 main()

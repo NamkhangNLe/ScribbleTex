@@ -107,6 +107,12 @@ def MULTIresizeSmaller(imgs, padding):
     
     return resizedImgs
 
+def convertAll2D(imgs):
+    """Takes in a 3D array, convert to 2D array where each 1D array is a dataPoint """
+    imgs = np.array(imgs)
+    numLayers, height, width = imgs.shape
+    return imgs.reshape(numLayers, height * width)
+
 
 
 
