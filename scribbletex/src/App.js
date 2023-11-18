@@ -37,15 +37,27 @@ function App() {
   const capture = () => {
     const canvas = saveableCanvas.current.canvasContainer.children[1];
     html2canvas(canvas).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
+      const imgData = canvas.toDataURL('image/jpg');
       setDrawingDataUrl(imgData);
+
     });
   };
+
+  const downloadImage = () => {
+    const link = document.createElement('a');
+    link.href = drawingDataUrl;
+    link.download = 'scribbletex.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
 
   // This function is called when the user releases the mouse button.
   const handleMouseUp = () => {
     //Note that this calls the capture function above.
     capture();
+    downloadImage();
     alert("Drawing finished!"); 
   };
 
@@ -101,7 +113,7 @@ function App() {
 
         <div className = 'hbox' style={{ display: 'flex', justifyContent: 'space-around' }}>
           {/* Canvas */}
-          <div className="canvas-container" onMouseUp={handleMouseUp}>
+          <div className="canvas-container" onMouseLeave={handleMouseUp}>
             <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
           </div>
 
