@@ -9,8 +9,6 @@ import 'katex/dist/katex.min.css';
 
 function App() {
 
-  //I need to add comments to this file. Above every line or function, lets make
-  //sure we have a comment explaining what it does. This will help us understand.
 
   // This is a React hook. It is a way to store state in a functional component.
   const [drawingDataUrl, setDrawingDataUrl] = useState('');
@@ -24,10 +22,12 @@ function App() {
   // This will be a combined set of latex script that can be saved!
   const [output, setOutput] = useState('');
 
+  //This is a function to add newly translated text to the output string.
   const saveText = () => {
       output += text + '\n';
   }
 
+  //These are functions to handle the mouse events
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [isMouseOut, setIsMouseOut] = useState(false);
 
@@ -46,6 +46,8 @@ function App() {
     });
   };
 
+  //This downloads the image to the user's computer.
+  //Probably a placeholder since it will be uploaded to the server.
   const downloadImage = () => {
     const link = document.createElement('a');
     link.href = drawingDataUrl;
@@ -83,7 +85,9 @@ function App() {
       alert('Failed to upload image.');
     }
   };
-  
+
+
+  // This function is called to download the txt output
   const downloadText = () => {
     const element = document.createElement("a");
     const file = new Blob([output], {type: 'text/plain'});
@@ -117,14 +121,13 @@ function App() {
         <div className = 'hbox' style={{ display: 'flex', justifyContent: 'space-around' }}>
           {/* Canvas */}
           <div className="canvas-container" 
+            //These events ensure unecessary API calls are not made until
+            //the user has drawn something and the mouse has left 
+            //the canvas, it calls handleMouseUp() to save the image.
             onMouseUp={()=> setIsMouseDown(false)}
             onMouseLeave={() => {setIsMouseOut(true); if(!isMouseDown) handleMouseUp()}}
             onMouseEnter={() => setIsMouseDown(true)}
-
-
           >
-          
-          
             <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
           </div>
 
