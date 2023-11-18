@@ -63,7 +63,7 @@ function App() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <img src={github} alt="GitHub" style={{ width: '50px', height: '50px' }} />
+                        <img src={github} alt="GitHub" style={{ width: '50px', height: '50px', marginTop: '5px' }} />
                     </a>
                     </header>
                     </div>
