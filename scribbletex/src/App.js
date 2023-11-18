@@ -28,6 +28,9 @@ function App() {
       output += text + '\n';
   }
 
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [isMouseOut, setIsMouseOut] = useState(false);
+
   // This function clears the canvas.
   const handleClear = () => {
     saveableCanvas.current.clear();
@@ -113,7 +116,15 @@ function App() {
 
         <div className = 'hbox' style={{ display: 'flex', justifyContent: 'space-around' }}>
           {/* Canvas */}
-          <div className="canvas-container" onMouseLeave={handleMouseUp}>
+          <div className="canvas-container" 
+            onMouseUp={()=> setIsMouseDown(false)}
+            onMouseLeave={() => {setIsMouseOut(true); if(!isMouseDown) handleMouseUp()}}
+            onMouseEnter={() => setIsMouseDown(true)}
+
+
+          >
+          
+          
             <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
           </div>
 
