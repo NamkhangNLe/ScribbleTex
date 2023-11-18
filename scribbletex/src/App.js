@@ -64,7 +64,7 @@ function App() {
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {/* This is the title of the page, and the logo*/}
           <p style={{ marginRight: '50px', marginTop: '-100px' }}>
-              ScribbleTex
+            ScribbleTex
           </p>
           <img src={logo} className="App-logo" alt="logo" style={{ width: '150px', marginTop: '-100px' }} />
         </div>
@@ -75,30 +75,30 @@ function App() {
         <div className="canvas-container" style={{ marginTop: '-50px' }} onMouseUp={handleMouseUp}>
           <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
         </div>
-                      
+
         {/* Buttons */}
         <div className="button-container">
           <button onClick={handleClear}>Clear</button>
           <button onClick={handleUpload}>Upload</button>
         </div>
 
-        {/* Image from canvas is drawn to the screen, this is */}    
+        {/* Image is drawn to screen, this is an example */}
         <img src={drawingDataUrl} alt="drawing" />
 
-                    <div className='spacer' />
+        <div className='spacer' />
 
-                    {/* GitHub link */}
-                    <a
-                      className="App-link"
-                      href="https://github.com/josephmasson26/ScribbleTex"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      GitHub
-                    </a>
-                  </header>
-                </div>
-              );
-            }
+        {/* GitHub link */}
+        <a
+          className="App-link"
+          href="https://github.com/josephmasson26/ScribbleTex"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </header>
+    </div>
+  );
+}
 
-            export default App;
+export default App;
