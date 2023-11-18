@@ -6,19 +6,21 @@ import html2canvas from 'html2canvas';
 
 function App() {
 
-  
+  //I need to add comments to this file. Above every line or function, lets make
+  //sure we have a comment explaining what it does. This will help us understand.
+
+  // This is a React hook. It is a way to store state in a functional component.
   const [drawingDataUrl, setDrawingDataUrl] = useState('');
 
+  // This assigns a reference to the canvas so we can access it later.
   const saveableCanvas = useRef();
 
+  // This function clears the canvas.
   const handleClear = () => {
     saveableCanvas.current.clear();
   }
 
-  
-
-  
-
+  // This function captures the canvas and converts it to a data URL. 
   const capture = () => {
     const canvas = saveableCanvas.current.canvasContainer.children[1];
     html2canvas(canvas).then((canvas) => {
@@ -27,11 +29,15 @@ function App() {
     });
   };
 
+  // This function is called when the user releases the mouse button.
   const handleMouseUp = () => {
+    //Note that this calls the capture function above.
     capture();
     alert("Drawing finished!"); 
   };
 
+  // This function uploads the image to the server.
+  // The server needs to be changed and tested.
   const handleUpload = async () => {
     const response = await fetch('https://your-server.com/upload', {
       method: 'POST',
@@ -50,32 +56,34 @@ function App() {
     }
   };
 
-
+  // This is the HTML that is rendered to the page.
   return (
     <div className="App">
       <header className="App-header">
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-            <p style={{ marginRight: '50px', marginTop: '-100px' }}>
-                        ScribbleTex
-                      </p>
-                      <img src={logo} className="App-logo" alt="logo" style={{ width: '150px', marginTop: '-100px' }} />
-                    </div>
+          {/* This is the title of the page, and the logo*/}
+          <p style={{ marginRight: '50px', marginTop: '-100px' }}>
+              ScribbleTex
+          </p>
+          <img src={logo} className="App-logo" alt="logo" style={{ width: '150px', marginTop: '-100px' }} />
+        </div>
 
-                    <div className='spacer' />
+        <div className='spacer' />
 
-                    {/* Canvas */}
-                    <div className="canvas-container" style={{ marginTop: '-50px' }} onMouseUp={handleMouseUp}>
-                      <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
-                    </div>
+        {/* Canvas */}
+        <div className="canvas-container" style={{ marginTop: '-50px' }} onMouseUp={handleMouseUp}>
+          <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
+        </div>
                       
-                    {/* Buttons */}
-                    <div className="button-container">
-                      <button onClick={handleClear}>Clear</button>
-                      <button onClick={handleUpload}>Upload</button>
-                    </div>
-                    
-                    <img src={drawingDataUrl} alt="drawing" />
+        {/* Buttons */}
+        <div className="button-container">
+          <button onClick={handleClear}>Clear</button>
+          <button onClick={handleUpload}>Upload</button>
+        </div>
+
+        {/* Image from canvas is drawn to the screen, this is */}    
+        <img src={drawingDataUrl} alt="drawing" />
 
                     <div className='spacer' />
 
