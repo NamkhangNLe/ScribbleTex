@@ -56,6 +56,7 @@ def main():
     #_______CONVERT TO 1D________
     converted2D = convertAll2D(resize)
     print(converted2D.shape)
+
     # Conclusion: IN THE END, resize spits out a 3D array where each 2D array slice is a 45x45 image
     # Call StacK:
     # getImgFileName = "path to image"
@@ -67,6 +68,8 @@ def main():
     # call MULTIresizeSmaller(resize, padding)
     # call convertAll2D(resize)
     # This can now go straight into the model
+    # call MULTIresizeSmaller(subarray, padding)
+    # You now get 3D array
 main()
 
 
