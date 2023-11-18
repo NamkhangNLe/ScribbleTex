@@ -74,6 +74,8 @@ function App() {
                       <button onClick={handleClear}>Clear</button>
                       <button onClick={handleUpload}>Upload</button>
                     </div>
+                    
+                    <img src={drawingDataUrl} alt="drawing" />
 
                     <div className='spacer' />
 
