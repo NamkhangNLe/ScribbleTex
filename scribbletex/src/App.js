@@ -88,7 +88,7 @@ function App() {
 
           {/* Placeholder Text */}
           <div className="placeholder-text">
-            <p> {text}  </p>
+            <p>   </p>
           </div>
         </div>
 
