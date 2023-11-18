@@ -1,6 +1,6 @@
 import React, { useState, useRef} from 'react';
 import logo from './logo.svg';
-import github from '/Users/Explo1t/Documents/ScribbleTex/scribbletex/src/github.png';
+import github from './github.png';
 import CanvasDraw from 'react-canvas-draw';
 import './App.css';
 import html2canvas from 'html2canvas';
@@ -89,16 +89,18 @@ function App() {
 
         <div className='spacer' />
 
-         {/* GitHub link */}
-                    <a
-                      className="App-link"
-                      href="https://github.com/josephmasson26/ScribbleTex"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                        <img src={github} alt="GitHub" style={{ width: '50px', height: '50px', marginTop: '5px' }} />
-                    </a>
+        {/* GitHub link */}
+        <a
+          className="App-link"
+          href="https://github.com/josephmasson26/ScribbleTex"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={github} alt="GitHub" style={{ width: '50px', height: '50px', marginTop: '5px' }} />
+        </a>
       </header>
     </div>
   );
 }
+
+export default App;
