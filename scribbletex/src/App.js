@@ -20,6 +20,14 @@ function App() {
     String (drawing);
   }
 
+  //Function called when mouse is released
+  const handleMouseUp = () => {
+    const drawing = saveableCanvas.current.getSaveData("png");
+    setDrawingDataUrl(drawing);
+    alert("Drawing finished!"); 
+  }
+
+
 
   return (
     <div className="App">
@@ -31,8 +39,15 @@ function App() {
 
         <div className='spacer' />
 
-        <CanvasDraw ref = {saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
-          
+        <div className="hbox">
+          <div onMouseUp={handleMouseUp} >
+          <CanvasDraw ref = {saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={600} canvasHeight={500}/>
+          </div>
+          <div className="placeholder"> Placeholder Output</div>
+        </div>
+
+        
+      
         <button onClick = {handleClear}>Clear</button>
         <button onClick = {handleUpload}>Upload</button>
 
@@ -54,3 +69,9 @@ function App() {
 }
 
 export default App;
+
+//hbox for canvas and output
+//github repo and credits at bottom
+
+
+

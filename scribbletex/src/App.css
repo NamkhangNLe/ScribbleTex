@@ -1,3 +1,16 @@
+.hbox {
+  display: flex;
+}
+
+.canvas {
+  margin-left: 0px; /* Adjust as needed */
+  margin-right: 200px; /* Adjust as needed */
+}
+
+.placeholder {
+  margin-left: 200px; /* Adjust as needed */
+}
+
 .App {
   text-align: center;
 }
