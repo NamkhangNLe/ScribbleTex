@@ -67,9 +67,6 @@ function App() {
 
         <div className='spacer' />
 
-        {/* Display the drawing */}
-        <img src={drawingDataUrl} alt="drawing" />
-
         {/* GitHub link */}
         <a
           className="App-link"
