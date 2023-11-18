@@ -45,16 +45,17 @@ function App() {
     <div className="App">
       <header className="App-header">
         {/* Logo */}
-        <img src={logo} className="App-logo" alt="logo" style={{ position: 'absolute', top: '0', right: '0', width: '200px' }} />
-        {/* Title */}
-        <p style={{ position: 'absolute', top: '0', left: '100' }}>
-          ScribbleTex
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <p style={{ marginRight: '50px' }}>
+            ScribbleTex
+          </p>
+          <img src={logo} className="App-logo" alt="logo" style={{ width: '150px' }} />
+        </div>
 
         <div className='spacer' />
 
         {/* Canvas */}
-        <div className="canvas-container" style={{ marginTop: '200px' }}>
+        <div className="canvas-container" style={{ marginTop: '0px' }}>
           <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
         </div>
           
@@ -84,9 +85,3 @@ function App() {
 }
 
 export default App;
-
-/**
- * 
- * HBox for Canvas and Output
- * GitHub Repository and Credits at the bottom
- */
