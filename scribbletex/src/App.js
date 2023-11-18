@@ -85,5 +85,8 @@ function App() {
 
 export default App;
 
-
-
+/**
+ * 
+ * HBox for Canvas and Output
+ * GitHub Repository and Credits at the bottom
+ */
