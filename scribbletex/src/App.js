@@ -46,7 +46,7 @@ function App() {
     });
   };
 
-  //This downloads the image to the user's computer.
+  //This downloads the image to the user's computer.a
   //Probably a placeholder since it will be uploaded to the server.
   const downloadImage = () => {
     const link = document.createElement('a');
