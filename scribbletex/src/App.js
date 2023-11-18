@@ -32,45 +32,41 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" style={{ position: 'absolute', top: '0', right: '0', width: '200px' }} />
-        <p style={{ position: 'absolute', top: '0', left: '100' }}>
-          ScribbleTex
-        </p>
+        {/* Logo */}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+            <p style={{ marginRight: '50px', marginTop: '-100px' }}>
+                        ScribbleTex
+                      </p>
+                      <img src={logo} className="App-logo" alt="logo" style={{ width: '150px', marginTop: '-100px' }} />
+                    </div>
 
-        <div className='spacer' />
+                    <div className='spacer' />
 
+                    {/* Canvas */}
+                    <div className="canvas-container" style={{ marginTop: '-50px' }}>
+                      <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
+                    </div>
+                      
+                    {/* Buttons */}
+                    <div className="button-container">
+                      <button onClick={handleClear}>Clear</button>
+                      <button onClick={handleUpload}>Upload</button>
+                    </div>
 
-        <div className="canvas-container" style={{ marginTop: '200px' }} onMouseUp={handleMouseUp}>
-          <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
-        </div>
-          
-        <div className="button-container">
-          <button onClick={handleClear}>Clear</button>
-          <button onClick={handleUpload}>Upload</button>
-        </div>
+                    <div className='spacer' />
 
+                    {/* GitHub link */}
+                    <a
+                      className="App-link"
+                      href="https://github.com/josephmasson26/ScribbleTex"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub
+                    </a>
+                  </header>
+                </div>
+              );
+            }
 
-        <div className='spacer' />
-
-        <img src={drawingDataUrl} alt="drawing" />
-
-        <a
-          className="App-link"
-          href="https://github.com/josephmasson26/ScribbleTex"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-
-//hbox for canvas and output
-//github repo and credits at bottom
-
-
-
+            export default App;
