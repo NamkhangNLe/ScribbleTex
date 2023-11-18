@@ -46,39 +46,39 @@ function App() {
       <header className="App-header">
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <p style={{ marginRight: '50px' }}>
-            ScribbleTex
-          </p>
-          <img src={logo} className="App-logo" alt="logo" style={{ width: '150px' }} />
-        </div>
+            <p style={{ marginRight: '50px', marginTop: '-100px' }}>
+                        ScribbleTex
+                      </p>
+                      <img src={logo} className="App-logo" alt="logo" style={{ width: '150px', marginTop: '-100px' }} />
+                    </div>
 
-        <div className='spacer' />
+                    <div className='spacer' />
 
-        {/* Canvas */}
-        <div className="canvas-container" style={{ marginTop: '0px' }}>
-          <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
-        </div>
-          
-        {/* Buttons */}
-        <div className="button-container">
-          <button onClick={handleClear}>Clear</button>
-          <button onClick={handleUpload}>Upload</button>
-        </div>
+                    {/* Canvas */}
+                    <div className="canvas-container" style={{ marginTop: '-50px' }}>
+                      <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
+                    </div>
+                      
+                    {/* Buttons */}
+                    <div className="button-container">
+                      <button onClick={handleClear}>Clear</button>
+                      <button onClick={handleUpload}>Upload</button>
+                    </div>
 
-        <div className='spacer' />
+                    <div className='spacer' />
 
-        {/* GitHub link */}
-        <a
-          className="App-link"
-          href="https://github.com/josephmasson26/ScribbleTex"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </header>
-    </div>
-  );
-}
+                    {/* GitHub link */}
+                    <a
+                      className="App-link"
+                      href="https://github.com/josephmasson26/ScribbleTex"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      GitHub
+                    </a>
+                  </header>
+                </div>
+              );
+            }
 
-export default App;
+            export default App;
