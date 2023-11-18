@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "html2canvas": "^1.4.1",
     "react-canvas-draw": "^1.2.1"
   }
 }
