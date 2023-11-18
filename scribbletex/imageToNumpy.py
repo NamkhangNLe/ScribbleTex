@@ -27,10 +27,12 @@ def underlyingRows(grayImage):
     compressed = np.any(grayImage == 1, axis=0).astype(int)
     return compressed
 
+#DEPRECATED
 def underlyingCols(grayImage):
-    """ Same as above but for columns"""
+    """ DEPRECATED: Same as above but for columns"""
 
     compressed = np.any(grayImage == 1, axis=1).astype(int)
+
     return compressed
 
 def groupOnes1xD(rowImage):
@@ -46,7 +48,6 @@ def groupOnes1xD(rowImage):
         if (rowImage[index] == 1):
             if not sameString:
                 sameString = True
-                print(index)
                 temp.append(index)
         else:
             if (sameString and index != 0):
@@ -57,26 +58,29 @@ def groupOnes1xD(rowImage):
     
     return groupings
 
-def groupOnesDx1(colImage):
-    """ Same thing as above, but with D x 1 columns """
-    numElements = colImage.shape[0]
-    groupings = [] # main array that will hold [begin, end] of contigous 1s 
-    sameString = False # state machine, baby
-    temp = []
+def groupOnesVert(img):
+    """ Given a 2D array, find where the 1s begin and end from top down
+    This is a helper method for getSubarrays and the goal is for a segment of the full array to be plugged in. 
+    """
+    oneRows = np.any(img, axis=1)
+    oneIndices = np.where(oneRows)[0]
+    firstOccurrance = oneIndices[0] if oneIndices.size > 0 else None
+    lastOccurance = oneIndices[-1] if oneIndices.size > 0 else None
+    return firstOccurrance, lastOccurance
 
-    for index in range(numElements):
-        if (colImage[index] == 1):
-            if not sameString:
-                sameString = True
-                temp.append(index)
-        else:
-            if (sameString and index != 0):
-                temp.append(index - 1)
-                groupings.append(temp)
-                temp = []
-            sameString = False
+
+def getSubarrays(img, row):
+    """ Given the big picture, be able to split letter by letter """
+    subArrays = [] # holds all of the subArrays/subPicture
+    for grouping in row:
+        arr = img[:, grouping[0] : grouping[1]] #Captures the rows for one group
+        firstOccurrance, lastOccurance = groupOnesVert(arr) #Captures the first and last heights
+        arr = arr[firstOccurrance:lastOccurance, :]
+        subArrays.append(arr)
     
-    return groupings
-            
+    return subArrays
+
+
+
             
 

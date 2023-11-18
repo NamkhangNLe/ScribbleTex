@@ -25,20 +25,23 @@ def main():
     print("______________________________________________________________")
     #________________UNDERLYING ROWS AND COLS__________________
 
-    rows = underlyingRows(gray)
-    cols = underlyingCols(gray)
-
+    rows = underlyingRows(gray) #Get the 1D array of rows collapsed
+    cols = underlyingCols(gray) #DEPRECATED: get 1D array of columns collapsed
+ 
     print("Rows: " + str(rows))
     print("Cols: " + str(cols))
     print()
     print("______________________________________________________________")
 
-    #_____________GROUPINGS_______________
+    #_____________GROUPINGS_________________
     testExampleRow = np.array([0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0])
     testExampleCol = np.array([[0], [0], [1], [1], [1], [0], [0], [1], [1], [1], [1], [0], [0]])
-    print("Groupings Test: " + str(groupOnesDx1(testExampleCol)))
+    groups = groupOnes1xD(rows)
     
-    #_____________
+    #_____________GET SUBARRAY______________
+    subarray = getSubarrays(gray, groups)
+    np.savetxt("subarray.txt", subarray[0], fmt='%d') # Subarray is 3D array that every layer, holds a letter that is bounded perfectly
+    
 
 main()
 
