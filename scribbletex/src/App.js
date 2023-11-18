@@ -1,5 +1,6 @@
 import React, { useState, useRef} from 'react';
 import logo from './logo.svg';
+import github from '/Users/Explo1t/Documents/ScribbleTex/scribbletex/src/github.png';
 import CanvasDraw from 'react-canvas-draw';
 import './App.css';
 import html2canvas from 'html2canvas';
@@ -62,6 +63,7 @@ function App() {
       <header className="App-header">
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
+
           {/* This is the title of the page, and the logo*/}
           <p style={{ marginRight: '50px', marginTop: '-100px' }}>
             ScribbleTex
@@ -87,18 +89,16 @@ function App() {
 
         <div className='spacer' />
 
-        {/* GitHub link */}
-        <a
-          className="App-link"
-          href="https://github.com/josephmasson26/ScribbleTex"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
+         {/* GitHub link */}
+                    <a
+                      className="App-link"
+                      href="https://github.com/josephmasson26/ScribbleTex"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                        <img src={github} alt="GitHub" style={{ width: '50px', height: '50px', marginTop: '5px' }} />
+                    </a>
       </header>
     </div>
   );
 }
-
-export default App;
