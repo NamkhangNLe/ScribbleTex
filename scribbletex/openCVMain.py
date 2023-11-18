@@ -4,6 +4,7 @@ import cv2
 from imageToNumpy import *
 
 def main():
+    print("______________________________________________________________")
     #______________LOAD FILE_________________
     # file paths, right now, this only runs on Jonathan's machine
     imgFileName = "/Users/jonathan/Documents/Desktop/GT Master Files/Fall 2023/AI Hack/ScribbleTex/scribbletex/Example.png" 
@@ -12,7 +13,7 @@ def main():
     
     print("Loaded image shape: " + str(img.shape))   
     print()
-    print()
+    print("______________________________________________________________")
 
     #________________GRAYSCALE_______________________
     gray = toGrayscale(img)
@@ -21,7 +22,7 @@ def main():
     # For testing purposes, export to txt
     np.savetxt("gray.txt", gray, fmt='%d')
     print()
-    print()
+    print("______________________________________________________________")
     #________________UNDERLYING ROWS AND COLS__________________
 
     rows = underlyingRows(gray)
@@ -30,11 +31,14 @@ def main():
     print("Rows: " + str(rows))
     print("Cols: " + str(cols))
     print()
-    print()
+    print("______________________________________________________________")
 
     #_____________GROUPINGS_______________
-    testExample = np.array([0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0])
-    print("Groupings: " + str(groupOnes(rows)))
+    testExampleRow = np.array([0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0])
+    testExampleCol = np.array([[0], [0], [1], [1], [1], [0], [0], [1], [1], [1], [1], [0], [0]])
+    print("Groupings Test: " + str(groupOnesDx1(testExampleCol)))
+    
+    #_____________
 
 main()
 

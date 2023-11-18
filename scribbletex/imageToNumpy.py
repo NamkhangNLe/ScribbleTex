@@ -33,20 +33,41 @@ def underlyingCols(grayImage):
     compressed = np.any(grayImage == 1, axis=1).astype(int)
     return compressed
 
-def groupOnes(rowImage):
+def groupOnes1xD(rowImage):
     """ Input a 1 x D array, create a list that has all of start and end indices of every groupings of ones in a tuple
     """
 
     groupings = [] # main array that will hold [begin, end] of contigous 1s 
-
+    numElements = rowImage.shape[0]
     sameString = False # state machine, baby
     temp = []
 
-    for index in range(len(rowImage)):
+    for index in range(numElements):
         if (rowImage[index] == 1):
             if not sameString:
                 sameString = True
                 print(index)
+                temp.append(index)
+        else:
+            if (sameString and index != 0):
+                temp.append(index - 1)
+                groupings.append(temp)
+                temp = []
+            sameString = False
+    
+    return groupings
+
+def groupOnesDx1(colImage):
+    """ Same thing as above, but with D x 1 columns """
+    numElements = colImage.shape[0]
+    groupings = [] # main array that will hold [begin, end] of contigous 1s 
+    sameString = False # state machine, baby
+    temp = []
+
+    for index in range(numElements):
+        if (colImage[index] == 1):
+            if not sameString:
+                sameString = True
                 temp.append(index)
         else:
             if (sameString and index != 0):
