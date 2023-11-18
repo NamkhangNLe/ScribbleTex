@@ -2,9 +2,32 @@
   display: flex;
 }
 
+.canvas, .placeholder-text {
+  flex-grow: 1;
+  padding: 10px;
+}
+
 .canvas {
   margin-left: 0px; /* Adjust as needed */
-  margin-right: 200px; /* Adjust as needed */
+  margin-right: 100px; /* Adjust as needed */
+}
+
+/* App.css */
+
+@keyframes blink {
+  0% {opacity: 1;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.placeholder-text p:after {
+  content: '|'; /* the cursor */
+  animation: blink 1s infinite;
+  margin-left: 100px; /* Adjust as needed */
+}
+
+.hbox {
+  display: flex;
 }
 
 .spacer {

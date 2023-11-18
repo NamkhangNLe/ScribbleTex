@@ -75,10 +75,21 @@ function App() {
 
         <div className='spacer' />
 
-        {/* Canvas */}
-        <div className="canvas-container" style={{ marginTop: '-50px' }} onMouseUp={handleMouseUp}>
-          <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
+        
+
+        <div className = 'hbox' style={{ display: 'flex', justifyContent: 'space-around' }}>
+          {/* Canvas */}
+          <div className="canvas-container" onMouseUp={handleMouseUp}>
+            <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
+          </div>
+
+          {/* Placeholder Text */}
+          <div className="placeholder-text">
+            <p></p>
+          </div>
         </div>
+
+        
 
         {/* Buttons */}
         <div className="button-container">
