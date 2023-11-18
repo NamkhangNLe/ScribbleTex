@@ -3,8 +3,8 @@
 }
 
 .canvas, .placeholder-text {
-  flex-grow: 1;
-  padding: 10px;
+  
+  padding: 200px;
 }
 
 .canvas {
@@ -24,6 +24,7 @@
   content: '|'; /* the cursor */
   animation: blink 1s infinite;
   margin-left: 100px; /* Adjust as needed */
+  font-size: 100px;
 }
 
 .hbox {

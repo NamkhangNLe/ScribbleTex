@@ -16,6 +16,9 @@ function App() {
   // This assigns a reference to the canvas so we can access it later.
   const saveableCanvas = useRef();
 
+  // Need a string defined that will be updated in the future.
+  const [text, setText] = useState('');
+
   // This function clears the canvas.
   const handleClear = () => {
     saveableCanvas.current.clear();
@@ -85,7 +88,7 @@ function App() {
 
           {/* Placeholder Text */}
           <div className="placeholder-text">
-            <p></p>
+            <p> {text}  </p>
           </div>
         </div>
 
