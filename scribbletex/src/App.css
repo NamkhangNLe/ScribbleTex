@@ -37,6 +37,11 @@
   color: white;
 }
 
+.test-image {
+  width: 50px;  /* adjust as needed */
+  height: 50px; /* adjust as needed */
+}
+
 .App-link {
   color: #61dafb;
 }

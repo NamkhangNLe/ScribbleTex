@@ -85,7 +85,7 @@ function App() {
         </div>
 
         {/* Image is drawn to screen, this is an example */}
-        <img src={drawingDataUrl} alt="drawing" />
+        <img src={drawingDataUrl} alt="drawing" className='test-image'/>
 
         <div className='spacer' />
 
