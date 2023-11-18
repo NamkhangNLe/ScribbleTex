@@ -55,6 +55,7 @@ function App() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    handleClear();    
   }
 
 
