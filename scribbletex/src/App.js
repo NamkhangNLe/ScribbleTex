@@ -1,5 +1,6 @@
 import React, { useState, useRef} from 'react';
 import logo from './logo.svg';
+import github from '/Users/Explo1t/Documents/ScribbleTex/scribbletex/src/github.png';
 import CanvasDraw from 'react-canvas-draw';
 import './App.css';
 
@@ -62,10 +63,10 @@ function App() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      GitHub
+                      <img src={github} alt="GitHub" style={{ width: '50px', height: '50px' }} />
                     </a>
-                  </header>
-                </div>
+                    </header>
+                    </div>
               );
             }
 
