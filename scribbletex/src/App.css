@@ -7,12 +7,21 @@
   margin-right: 200px; /* Adjust as needed */
 }
 
+.spacer {
+  flex-grow: 0.5;
+}
+
 .placeholder {
   margin-left: 200px; /* Adjust as needed */
 }
 
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #282c34; 
 }
 
 .App-logo {
@@ -20,11 +29,22 @@
   pointer-events: none;
 }
 
+.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5em;
+  margin: 0.5em;
+  color: #61dafb;
+  margin-top: 2em;
+  
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
 
 .App-header {
   background-color: #282c34;

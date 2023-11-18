@@ -65,11 +65,13 @@ function App() {
         <div style={{ display: 'flex', alignItems: 'center' }}>
 
           {/* This is the title of the page, and the logo*/}
-          <p style={{ marginRight: '50px', marginTop: '-100px' }}>
+          <p  className='title' style={{ marginRight: '50px', marginTop: '-85px' }}>
             ScribbleTex
           </p>
           <img src={logo} className="App-logo" alt="logo" style={{ width: '150px', marginTop: '-100px' }} />
         </div>
+
+        
 
         <div className='spacer' />
 
