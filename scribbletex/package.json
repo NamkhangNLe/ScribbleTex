@@ -1,7 +1,6 @@
 {
   "name": "scribbletex",
   "version": "0.1.0",
-  "proxy": "https://localhost:5000",
   "private": true,
   "homepage": "https://namkhangnle.github.io/ScribbleTex/",
   "dependencies": {
