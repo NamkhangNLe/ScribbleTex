@@ -48,6 +48,7 @@ function App() {
 
   //This downloads the image to the user's computer.a
   //Probably a placeholder since it will be uploaded to the server.
+  // <3 DEPRECATED BY JONATHAN
   const downloadImage = () => {
     const link = document.createElement('a');
     link.href = drawingDataUrl;
@@ -58,12 +59,31 @@ function App() {
     handleClear();    
   }
 
+  const uploadImage = async (imgData) => {
+    const response = await fetch('http://localhost:5000/upload', {  // wait for the ok signal
+      method: 'POST', // you are posting image data
+      headers: { //type json
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+      image: imgData,
+      }),
+    });
+    
+    if (response.ok) {
+      console.log('Image uploaded successfully!');
+    } else {
+      console.error('Failed to upload image.');
+    }
+  };
+
 
   // This function is called when the user releases the mouse button.
   const handleMouseUp = () => {
     //Note that this calls the capture function above.
     capture();
     // downloadImage();
+    uploadImage();
     alert("Drawing finished!"); 
   };
 
