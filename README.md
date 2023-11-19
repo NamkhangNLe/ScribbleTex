@@ -1,6 +1,6 @@
 # ScribbleTex
 
-ScribbleTex is a web application that leverages machine learning to convert handwritten text to LaTeX code. This application utilizes a React frontend with a Flask backend, integrating a machine learning model hosted on Google Cloud for the handwriting recognition.
+ScribbleTex is a web application that leverages machine learning to convert handwritten text to LaTeX code. This application utilizes a React frontend with a Flask backend, integrating a machine learning model hosted on Google Cloud for handwriting recognition.
 
 ## Features
 
@@ -14,18 +14,20 @@ ScribbleTex is a web application that leverages machine learning to convert hand
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/ScribbleTex.git
+   git clone https://github.com/NamkhangNLe/ScribbleTex.git
    ```
 
 2. Install dependencies for both frontend and backend:
    ```bash
    # Frontend (React)
-   cd ScribbleTex/frontend
+   cd ScribbleTex/scribbleTex
    npm install
    
    # Backend (Flask)
    cd ../backend
-   pip install -r requirements.txt
+   pip install flask
+   pip install flask_cors
+   pip install pillow
    ```
 
 ## Usage
@@ -33,12 +35,12 @@ ScribbleTex is a web application that leverages machine learning to convert hand
 1. Start the backend server:
    ```bash
    # From the 'backend' directory
-   python app.py
+   python server.py
    ```
 
 2. Launch the frontend:
    ```bash
-   # From the 'frontend' directory
+   # From the 'ScribbleTex/scribbleTex' directory
    npm start
    ```
 
@@ -58,7 +60,3 @@ Contributions are welcome! If you'd like to contribute to ScribbleTex, please fo
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin feature/YourFeature`
 5. Open a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
