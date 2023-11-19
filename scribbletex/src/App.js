@@ -299,22 +299,23 @@ function App() {
             <p>{"\\end{document}"}</p>
           </div>
         </div>
+
+        <div className="button-container">
+            <button onClick={handleClear}>Clear</button>
+          </div>
         
         <div className='latex-container'>
             <Latex style="color: white">{text}</Latex>
         </div>
 
-        <div className="button-container">
+        {/* <div className="button-container">
         <button onClick={downloadText}>Download Text</button>
-        </div>
+        </div> */}
         
         <div className='spacer' />
 
 
         {/* Buttons */}
-        <div className="button-container">
-          <button onClick={handleClear}>Clear</button>
-        </div>
 
         {/* Image is drawn to screen, this is an example
         <img src={drawingDataUrl} alt="drawing" className='test-image'/>
