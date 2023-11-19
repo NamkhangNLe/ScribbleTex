@@ -3,11 +3,10 @@ import cv2
 
 from imageToNumpy import *
 
-def main():
+def main(imgFileName):
     print("______________________________________________________________")
     #______________LOAD FILE_________________
     # file paths, right now, this only runs on Jonathan's machine
-    imgFileName = "/Users/jonathan/Documents/Desktop/GT Master Files/Fall 2023/AI Hack/ScribbleTex/scribbletex/Example.png" 
 
     img = cv2.imread(imgFileName) #convert into a numpy array
     
@@ -53,10 +52,7 @@ def main():
     print()
     print("______________________________________________________________")
 
-    #_______CONVERT TO 1D________
-    converted2D = convertAll2D(resize)
-    print(converted2D.shape)
-
+  
     # Conclusion: IN THE END, resize spits out a 3D array where each 2D array slice is a 45x45 image
     # Call StacK:
     # getImgFileName = "path to image"
@@ -70,6 +66,6 @@ def main():
     # This can now go straight into the model
     # call MULTIresizeSmaller(subarray, padding)
     # You now get 3D array
-main()
+main("/Users/jonathan/Documents/Desktop/GT Master Files/Fall 2023/AI Hack/ScribbleTex/scribbletex/Example.png")
 
 

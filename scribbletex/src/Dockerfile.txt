@@ -1,0 +1,25 @@
+#THIS IS NO LONGER IN USE. DEPRECATED
+
+
+# Use an official Python runtime as a parent image
+FROM python:3.8-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app, this gets both files
+COPY . /app 
+
+# Install any needed packages specified in requirements.txt
+# As an example, we're installing numpy and opencv-python-headless
+# opencv-python-headless is a version of OpenCV without GUI functionality, suitable for docker environments
+RUN pip install --trusted-host pypi.python.org numpy opencv-python-headless
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run the Python script when the container launches
+CMD ["python", ".openCVMain.py"]

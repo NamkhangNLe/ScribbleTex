@@ -1,4 +1,3 @@
-import math
 import numpy as np
 import cv2 
 
@@ -106,6 +105,7 @@ def MULTIresizeSmaller(imgs, padding):
         resizedImgs.append(resized)
     
     return resizedImgs
+
 
 def convertAll2D(imgs):
     """Takes in a 3D array, convert to 2D array where each 1D array is a dataPoint """
