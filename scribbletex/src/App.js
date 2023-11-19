@@ -6,17 +6,22 @@ import './App.css';
 import Latex from 'react-latex';
 import html2canvas from 'html2canvas';
 import 'katex/dist/katex.min.css';
+import axios from "axios";
 
 function App() {
 
 
   // This is a React hook. It is a way to store state in a functional component.
-  const [drawingDataUrl, setDrawingDataUrl] = useState('');
+  // State: set of data or properties that control output of component
+  // Current state is drawingDataUrl, setDrawingDataUrl is a function that updates State, '' is initialized state
+  const [drawingDataUrl, setDrawingDataUrl] = useState(''); // To update a state, you do setDrawingDataUrl(newState)
 
   // This assigns a reference to the canvas so we can access it later.
-  const saveableCanvas = useRef();
+  // DOM = Document Object Module
+  const saveableCanvas = useRef(); // saveableCanvas is a reference in the DOM
 
   // Need a string defined that will be updated in the future.
+  // Current text is '' called text, setText will can set new text
   const [text, setText] = useState('');
 
   // This will be a combined set of latex script that can be saved!
@@ -46,7 +51,7 @@ function App() {
     });
   };
 
-  //This downloads the image to the user's computer.a
+  //This downloads the image to the user's computer.
   //Probably a placeholder since it will be uploaded to the server.
   const downloadImage = () => {
     const link = document.createElement('a');
@@ -58,13 +63,52 @@ function App() {
     handleClear();    
   }
 
+  const sendToBackend = async () => {
+    const formData = new FormData();
+    formData.append("file", drawingDataUrl);
+
+    console.log(formData);
+
+    // try {
+    //   const response = await axios.post("http://localhost:5000/upload", formData);
+    //   console.log(response.data.message);
+    //   alert("Image uploaded successfully");
+    // } catch (error) {
+    //   if (error.response) {
+    //     console.error(error.response.data);
+    //   } else if (error.request) {
+    //     console.error("The request was made but no response was received");
+    //   } else {
+    //     console.error("An error occurred while sending the request", error.message);
+    //   }
+    // }
+
+
+    try {
+      var data = new FormData();
+      var file = new Blob(["file contents"], {type: "text/plain"});
+      data.append("file", file, "filename.txt");
+
+      const response = await axios.post("http://localhost:5000/test", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+        }
+      });
+      console.log(response.data.message);
+    } catch {
+      console.error("An error occurred while sending the request");
+    }
+  };
+
 
   // This function is called when the user releases the mouse button.
   const handleMouseUp = () => {
     //Note that this calls the capture function above.
     capture();
-    // downloadImage();
-    alert("Drawing finished!"); 
+    downloadImage();
+    // sendToBackend();
+    // alert("Drawing finished!"); 
   };
 
   // This function uploads the image to the server.
@@ -131,7 +175,7 @@ function App() {
             onMouseLeave={() => setIsMouseOut(true)}
             onMouseEnter={() => setIsMouseDown(true)}
           >
-            <CanvasDraw ref={saveableCanvas} brushRadius={1} brushColor="rgba(155,12,60,0.3)" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
+            <CanvasDraw ref={saveableCanvas} brushRadius={8} brushColor="black" lazyRadius="5" canvasWidth={500} canvasHeight={500} />
           </div>
 
           {/* Placeholder Text */}
@@ -171,7 +215,7 @@ function App() {
         {/* GitHub link */}
         <a
           className="App-link"
-          href="https://github.com/josephmasson26/ScribbleTex"
+          href="https://github.com/namkhangnle/ScribbleTex"
           target="_blank"
           rel="noopener noreferrer"
         >

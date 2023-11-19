@@ -9,7 +9,7 @@ import numpy as np
 # from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/")
 def home():
@@ -39,6 +39,13 @@ def upload():
         return jsonify({"message": "Cat"})
     else:
         return jsonify({"message": "Dog"})
+
+@app.route("/test", methods=['POST'])
+def test():
+    data = request.json
+    return jsonify(data)
+
+
 
 
 if __name__ == '__main__':
