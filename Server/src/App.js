@@ -259,7 +259,7 @@ function App() {
   return (
     <HostUi
       saveableCanvas={saveableCanvas}
-      setIsMouseOut={setIsMouseOut}
+      setIsMouseOut={setIsMouseDown}
       setIsMouseDown={setIsMouseDown}
       handleMouseUp={handleMouseUp}
       handleClear={handleClear}
